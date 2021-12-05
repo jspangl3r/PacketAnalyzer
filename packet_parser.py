@@ -9,7 +9,7 @@ class Packet:
         self.data_len = 0
         self.ttl = 0
         self.seq_number = 0
-    
+    # Allows packet objects to be printed in a readable manner 
     def __str__(self):
         pack_str = ""
         pack_str += "Time: " + str(self.time) + "\n"
@@ -24,7 +24,8 @@ def hex_to_ip(hex_data):
     ip_addr = ".".join(nums)
     return ip_addr
         
-
+# Takes in a file name containing the filtered ICMP packets and returns a list of 
+# packet objects
 def parse(file_name):
     f = open(file_name)
     lines = f.readlines()
