@@ -7,9 +7,9 @@ def main():
     NUM_NODES = 4
     output_f = open("output.csv", "w")
     for i in range(1, NUM_NODES + 1):
-        unfiltered = f"captures/Node{i}.txt"
+        unfiltered = f"Node{i}.txt"
         filter(unfiltered)
-        filtered = f"captures/Node{i}_filtered.txt"
+        filtered = f"Node{i}_filtered.txt"
         packets = parse(filtered)
         compute(packets, i, output_f)
         if i != NUM_NODES:
