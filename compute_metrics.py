@@ -50,7 +50,7 @@ def compute(packets, node_num, output_f):
         avg_reply_delay += (reply.time - request.time)*1000000
     avg_reply_delay /= num_echo_requests_received    
  
-   # Distance Metric - average num hops per echo request
+    # Distance Metric - average num hops per echo request
     avg_hops = 0
     for p in echo_requests_sent:
         # Check if source and dest IPs are on the same network
