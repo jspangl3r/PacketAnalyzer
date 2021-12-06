@@ -1,5 +1,4 @@
 from packet_parser import Packet
-import math
 
 # Global IP information of nodes
 NODE_IPS = ["192.168.100.1", "192.168.100.2", "192.168.200.1", "192.168.200.2"]
