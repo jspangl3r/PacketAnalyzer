@@ -33,6 +33,7 @@ def parse(file_name):
     packet_list = []
     eth_hdr_len = 14
     icmp_hdr_len = 8
+    packet_num = 0
     while i < len(lines):
         split_line = lines[i].strip().split()
         if split_line[0] == "":
@@ -45,16 +46,17 @@ def parse(file_name):
             packet.time = float(split_line[1])
             i += 2
 
-        split_line = lines[i].strip().split()
+        split_line = lines[i].strip().split("  ")
         hex_data = []
         while split_line != [] and len(split_line[0]) == 4:
-            hex_data.extend(split_line[1:-1])
+            hex_data.extend(split_line[1].split())
             i += 1
             if i < len(lines):
-                split_line = lines[i].strip().split()
+                split_line = lines[i].strip().split("  ")
             else:
                 break
         i+=1
+        packet_num += 1
         #### IP HEADER ####
         packet.ip_hdr_len = int(hex_data[eth_hdr_len][1])*4
         
