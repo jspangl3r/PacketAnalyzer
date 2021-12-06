@@ -44,8 +44,8 @@ def compute(packets, node_num, output_f):
     for request in echo_requests_sent:
         # Find corresponding ping reply
         reply = [p for p in echo_replies_received if p.seq_num == request.seq_num][0]
-        ping_rtts.append(reply.time - request.time) 
-    avg_rtt = sum(ping_rtts) / len(packets)
+        ping_rtts.append((reply.time - request.time)*1000) 
+    avg_rtt = sum(ping_rtts) / len(ping_rtts)
     # 2. 
     
     output_f.write(f"Average RTT (milliseconds),{avg_rtt}\n")
