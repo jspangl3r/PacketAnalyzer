@@ -8,7 +8,7 @@ class Packet:
         self.frame_len = 0
         self.data_len = 0
         self.ttl = 0
-        self.seq_number = 0
+        self.seq_num = 0
     # Allows packet objects to be printed in a readable manner 
     def __str__(self):
         pack_str = ""
