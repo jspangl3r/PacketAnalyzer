@@ -32,8 +32,3 @@ def filter(fileName) :
 			print("", file=open(fileName+"_filtered.txt", "a"))
 		line=f.readline()
 	f.close()
-
-# Get User Text File
-fileName=str(sys.argv[1])
-filter(fileName)
-
