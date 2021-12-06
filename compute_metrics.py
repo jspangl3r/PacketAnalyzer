@@ -39,16 +39,13 @@ def compute(packets, node_num, output_f):
      
     # Time Based Metrics
     # 1. Average Ping Round Trip Time (RTT)
+    ping_rtts = []
     avg_rtt = 0
     for request in echo_requests_sent:
         # Find corresponding ping reply
-        reply = [p for p in echo_replies_received if p.src_ip == request.dest_ip and 
-                 p.dest_ip == request.src_ip and p.seq_num == request.seq_num][0]
-        avg_rtt += (reply.time - request.time)
-        print(request)
-        print(reply)
-        print("=" * 30)
-    avg_rtt /= len(packets)
+        reply = [p for p in echo_replies_received if p.seq_num == request.seq_num][0]
+        ping_rtts.append(reply.time - request.time) 
+    avg_rtt = sum(ping_rtts) / len(packets)
     # 2. 
     
     output_f.write(f"Average RTT (milliseconds),{avg_rtt}\n")
